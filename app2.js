@@ -11,6 +11,8 @@ addTaskBtn.addEventListener("click", ()=>{
     card.innerText = "Test Card"
     // card.contentEditable = true;
     card.setAttribute("contentEditable","true")
+    card.setAttribute("draggable", "true")
+    // card.draggable = true;
     toDoContainer.append(card)
 
 
@@ -31,26 +33,18 @@ addTaskBtn.addEventListener("click", ()=>{
         }
     })
 
-///////////  let make a drop down 
-const dropdown=document.createElement('select');
-dropdown.innerHTML=`
-<option value="todo">Todo </option>
-<option value ="progress">In Progress</option>
-<option value="done">Done</option>
-`
-card.append(dropdown)
+//    events that apply on the card
+//dragstart
+//dragend
 
-
-dropdown.addEventListener("change",(eventDetails)=>{
-    // let selectElement = eventDetails.target;
-    // console.log(selectElement.value)
-    // console.log(dropdown.value)
-    let selectedValue = dropdown.value
-    let columnToBeMoved = document.getElementById(selectedValue);
-    columnToBeMoved.append(card)
-
-
+card.addEventListener("dragstart",()=>{
+    console.log("dragstart")
 })
+card.addEventListener("dragend",()=>{
+    console.log("dragend")
+})
+
+
 
 
 })
