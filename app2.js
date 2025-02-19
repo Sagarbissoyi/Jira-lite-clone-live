@@ -23,6 +23,8 @@ addTaskBtn.addEventListener("click", () => {
       card.innerText = "";
     }
   });
+
+
   //// blur,focus
   card.addEventListener("blur", () => {
     if (card.innerText.trim() == "") {
@@ -41,7 +43,7 @@ addTaskBtn.addEventListener("click", () => {
 
   });
   card.addEventListener("dragend", () => {
-    console.log("dragend");
+    console.log("dragEnd");
     card.style.opacity = "1";
   });
 
@@ -67,7 +69,7 @@ addTaskBtn.addEventListener("click", () => {
   //     eventDetails.preventDefault()
   // })
 
-  let dragEvents = ["drageover", "dragenter", "over"];
+  let dragEvents = ['drag over', 'dragenter', 'drop'];
 
   dragEvents.forEach((eventsOfDrag) => {
     let columns = document.getElementsByClassName("column");
@@ -77,8 +79,11 @@ addTaskBtn.addEventListener("click", () => {
         eventDetails.preventDefault();
 
         if(eventsOfDrag == "drop"){
-              let cardId=eventDetails.dataTransfer.grtData("text")
+              let cardId=eventDetails.dataTransfer.getData("text")
               let draggedCard = document.getElementById(cardId)
+              console.log(eventDetails)
+              let columnToBeMoved = eventDetails.target
+             columnToBeMoved.append(draggedCard)
         }
 
 
